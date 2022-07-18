@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-12">
+       <button class="btn btn-success">
+            New Recipe
+       </button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        
+        <app-receipe-item
+            *ngFor="let receipeEle of receipes"
+            [receipe] = "receipeEle"
+            (receipeSelected) = "onReceipeSelected(receipeEle)" >
+        </app-receipe-item>
+    </div>
+</div>
+
+<!-- [src] = "receipe.imagePath" -->

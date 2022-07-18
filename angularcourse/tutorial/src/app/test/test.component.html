@@ -1,0 +1,67 @@
+<h3>Template Reference variable</h3>
+<input type="text" #myInput>
+<button (click)="onClick(myInput)">Log</button>
+{{myInput.value}}
+
+
+<h3>Two Way binding</h3>
+<input type="text" [(ngModel)]="name">
+{{name}}
+
+<h3>ngSwitch</h3>
+<input type="text" [(ngModel)]="color">
+<div [ngSwitch]="color">
+  <div *ngSwitchCase="'red'">Red Color</div>
+  <div *ngSwitchCase="'green'">Green Color</div>
+  <div *ngSwitchCase="'blue'">Blue Color</div>
+  <div *ngSwitchDefault>Pick Again</div>
+</div>
+
+<h3>Component Interaction</h3>
+
+<h4>Parent to Child (@Input())</h4>
+<p>Hello {{parentData}}</p>
+
+<h4>Child to Parent (@Output())</h4>
+<button (click)="fireEvent()">Child to Parent</button>
+
+<h4> String Pipes</h4>
+<p>{{pipeVal}}</p>
+<p>{{pipeVal | lowercase}}</p>
+<p>{{pipeVal | uppercase}}</p>
+<p>{{pipeVal | slice:2:5}}</p>
+<p>{{pipeVal2 | titlecase}}</p>
+<p>{{person | json}}</p>
+
+<h4>Number Pipes</h4>
+<h5>{{5.678 | number:'1.2-3'}}</h5>
+<h5>{{5.678 | number: '3.4-5'}}</h5>
+<h5>{{5.678 | number: '3.1-2'}}</h5>
+
+<h4>Percent Pipes</h4>
+<h5>{{0.25 | percent}}</h5>
+
+<h4>Currency Pipes</h4>
+<h5>{{0.25 | currency}}</h5>
+<h5>{{0.25 | currency: 'INR'}}</h5>
+<h5>{{0.25 | currency: 'INR': 'code'}}</h5>
+
+<h4>Date Pipes</h4>
+<h5>{{date}}</h5>
+
+<h4>Short Date Pipes</h4>
+
+<h5>{{date | date:'short'}}</h5>
+<h5>{{date | date:'shortDate'}}</h5>
+<h5>{{date | date:'shortTime'}}</h5>
+
+<h4>Medium Date Pipes</h4>
+<h5>{{date | date:'medium'}}</h5>
+<h5>{{date | date:'mediumDate'}}</h5>
+<h5>{{date | date:'mediumTime'}}</h5>
+
+<h4>Long Date Pipes</h4>
+<h5>{{date | date:'long'}}</h5>
+<h5>{{date | date:'longDate'}}</h5>
+<h5>{{date | date:'longTime'}}</h5>
+

@@ -1,0 +1,479 @@
+
+<!-- <mat-toolbar class="sticky"> -->
+
+<mat-toolbar>
+<mat-toolbar-row>
+<button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    <!-- <mat-icon (click)="sidenav.toggle()">menu</mat-icon> -->
+</button>
+&nbsp;
+&nbsp;
+&nbsp;
+
+<button mat-icon-button>
+<!-- <img id="logo" src="https://miro.medium.com/max/1200/1*y0S5M5eIaZnxzyyMqaDF6g.png" alt="logo"> -->
+<img id="logo" 
+    src="https://lh3.googleusercontent.com/rxnP5bawvSK5vtKlEkPIKX29j65Z2RboOjD3Zo_byMRSnS8ao8qiqcpdKdICMyf4i6c2H_2I2ayZoA9OGx-nJv7Rhz8XrJBjKdUF1VKw2kv7lTKmJVeA" alt="logo">
+</button>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+<span id="home">Home</span>
+
+<span class="example-spacer"></span>
+
+<button (click)="toggleMenu()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+<mat-icon  *ngIf="!isOpen">search</mat-icon>
+<mat-icon  *ngIf="isOpen">search</mat-icon>
+
+</button>
+
+    <form *ngIf="isOpen">
+    <input  type="text" placeholder="Search contact" autofocus class="iptext">
+    <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true" (click)="toggleMenu()">×</span>
+     </button>
+   </form>
+  
+ <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button mat-icon-button  id="dropdownBasic1" ngbDropdownToggle>
+                <mat-icon>apps</mat-icon>
+            
+        </button>
+        
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-grid-list cols="3">
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-button-toggle-group>
+        </mat-list-item>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-grid-list cols="3">
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-button-toggle-group>
+        </mat-list-item>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-grid-list cols="3">
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                        <mat-icon >notifications</mat-icon>
+                        <br>
+                        <span class="menus"> Mail </span>
+                    </mat-button-toggle>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-button-toggle-group>
+        </mat-list-item>
+          
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> My Account</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus">Search </span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="appbtn">
+                <mat-icon >person</mat-icon>
+                <br>
+                <span class="menus">Google+</span>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        </mat-list-item >
+        <br>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="appbtn" >
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Mail </span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Calendar</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="appbtn">
+                <mat-icon >person</mat-icon>
+                <br>
+                <span class="menus">Drive </span>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        </mat-list-item >
+        <br>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus">Docs </span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Sheets</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="appbtn">
+                <mat-icon >person</mat-icon>
+                <br>
+                <span class="menus">Slides </span>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        </mat-list-item >
+        <br>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Sites</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Groups</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="appbtn">
+                <mat-icon>person</mat-icon>
+                <br>
+                <span class="menus">Contacts </span>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        </mat-list-item >
+        <br>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Youtube</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Maps</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="appbtn">
+                <mat-icon>person</mat-icon>
+                <br>
+                <span class="menus">News </span>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        </mat-list-item >
+        <br>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus">AdWords</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span class="menus"> Photos</span>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="appbtn">
+                <mat-icon>person</mat-icon>
+                <br>
+                <span class="menus">Translate </span>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        </mat-list-item >
+        <br>
+        <mat-list-item>
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <div class="menus">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span> My Business</span>
+                </div>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 1" class="appbtn">
+                <div class="menus">
+                <mat-icon >notifications</mat-icon>
+                <br>
+                <span> Hangouts</span>
+                </div>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="appbtn">
+                <div class="menus">
+                <mat-icon>person</mat-icon>
+                <br>
+                <span>Forms </span>
+                </div>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        </mat-list-item >
+
+        
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>
+
+
+
+
+
+ <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button  mat-icon-button   id="dropdownBasic1" ngbDropdownToggle>
+                <mat-icon>notifications</mat-icon>
+            
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <mat-list-item>
+
+        <mat-button-toggle-group #toggleBtn="matButtonToggleGroup">
+            <mat-button-toggle value="Toggle Button 1" class="tgbtn">
+                <mat-icon >notifications</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="Toggle Button 2" class="tgbtn">
+                <mat-icon (click)="toggleMenu()">person</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+
+        </mat-list-item >
+
+        <div *ngIf="isOpen">
+        <div id="notibar" style="height: 30vh">
+            <p class="read">Notifications</p>
+        </div>
+        <div >
+            <button mat-icon-button id="readbtn">
+                Previously Read
+            </button>
+        </div>
+        </div>
+
+        <div *ngIf="!isOpen" id="readmore" >
+            Read More...
+        </div>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>
+
+
+
+ <div class="row">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button mat-icon-button  id="dropdownBasic1" ngbDropdownToggle>
+                <mat-icon>face</mat-icon>
+            
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          
+            <mat-list-item>
+                <button mat-icon-button>
+                    <mat-icon class="profile">account_circle</mat-icon>
+                    <span>ABOUT ME</span>
+                </button>
+            </mat-list-item>
+    
+          <br>
+            <mat-list-item>
+                <button mat-icon-button>
+                    <mat-icon class="profile">question_answer</mat-icon>
+                    <span>REARRANGE CARDS</span>
+                </button>
+            </mat-list-item>
+          <br>
+          <mat-list-item>
+            <button mat-icon-button>
+                <mat-icon class="profile">settings</mat-icon>
+                <span>MY SETTINGS</span>
+            </button>
+            </mat-list-item>
+          <br>
+          <mat-list-item>
+            <button mat-icon-button>
+                <mat-icon class="profile">phone_iphone</mat-icon>
+                <span>LOGOUT</span>
+            </button>
+        </mat-list-item>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>
+
+
+
+
+</mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+        <mat-nav-list>
+            <mat-list-item id="name">
+                <mat-icon class="icons">face</mat-icon>
+                <span>Name <br> Designation</span>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon class="icons">home</mat-icon>
+                <span>Home</span>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon class="icons">chat</mat-icon>
+                <span>Requests</span>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon class="icons">insert_invitation</mat-icon>
+                <span>Team Calendar</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">access_time</mat-icon>
+                <span>Time & Attendance</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">group</mat-icon>
+                <span>People</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">folder_shared</mat-icon>
+                <span>Document Management</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">search</mat-icon>
+                <span>Hire</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">equalizer</mat-icon>
+                <span>Perform</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">insert_chart</mat-icon>
+                <span>Reports</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">hourglass_empty</mat-icon>
+                <span>Timesheet</span>
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="icons">assignment</mat-icon>
+                <span>Policies</span>
+            </mat-list-item>
+
+            <hr>
+            <mat-list-item>Powered by</mat-list-item>
+            <mat-list-item>
+                <img 
+                id="happier"
+                alt="happier"
+                src="data:image/png;base64,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">
+            </mat-list-item>
+            
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh"></div>
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+
+
+

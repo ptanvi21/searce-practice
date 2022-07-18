@@ -1,0 +1,25 @@
+.vr {
+    border-left: 1px solid black;
+    height: 150px;
+    position:absolute;
+    left: 50%;
+}
+
+.icon{
+    color: black;
+    margin-right: 10px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.socialmedia{
+    margin-top:20px;
+    padding-right:15px
+}
+
+.about{
+    margin-top:20px;
+    padding-right:15px
+}

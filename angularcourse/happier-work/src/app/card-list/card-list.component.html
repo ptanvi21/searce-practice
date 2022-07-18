@@ -1,0 +1,983 @@
+
+
+<!-- 1 -->
+ <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+        <mat-card class="mat-elevation-z4" >
+        <div class="heading1">
+          <mat-card-header>
+            <mat-card-title>
+                Wishes
+            </mat-card-title>
+          </mat-card-header>
+          <mat-form-field id="test" class="fieldcolor">
+            <mat-select [(value)]="selected" class="fieldcolor">
+              <mat-option value="option1">Previous 7 days</mat-option>
+              <mat-option value="option2">Today</mat-option>
+              <mat-option value="option3">Upcoming 7 days</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+          <mat-card-content>
+            <div class="text-right">
+            <button *ngIf="displaySend" type="button" class="btn btn-danger">Send Wishes</button>
+            </div>
+            <section class="example-section">
+                <mat-checkbox class="example-margin cardcheckbox" (click)="showSend()">   
+                 </mat-checkbox>
+                <span class="val"><b>Birthday</b></span>
+                <br>
+                <br>
+                <br>
+                <mat-checkbox class="example-margin cardcheckbox" (click)="showSend()">   
+                </mat-checkbox>
+               <span class="val"><b>Work Anniversary</b></span>
+            </section>
+
+          </mat-card-content>
+          
+        </mat-card>
+      </div>
+
+
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+        <mat-card class="mat-elevation-z4" >
+          <mat-card-header class="color1">
+            <mat-card-title>
+                Leave Balance 
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp; 
+                
+                <span>
+                    <button  mat-icon-button>
+                    <mat-icon>keyboard_arrow_left</mat-icon>
+                    </button>
+                </span>
+
+                
+
+                <mat-form-field>
+                    <mat-label>June 2022</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <!-- <mat-hint>June 2022</mat-hint> -->
+                    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                    <mat-datepicker #picker id="my-date-picker"></mat-datepicker>
+                  </mat-form-field>
+
+                &nbsp;
+                
+                <span>
+                    <button  mat-icon-button>
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                    </button>
+                </span>
+
+               
+                &nbsp;  
+                <span>
+                    <button  mat-icon-button>
+                    <mat-icon>add</mat-icon>
+                    </button>
+                </span>
+                
+
+            </mat-card-title>
+          </mat-card-header>
+         
+          <mat-card-actions>
+            <section>
+                <div>
+                    <button mat-button  (click)="showAllLeaves()">
+                       <p [style.color]="change ? '#18a399' : 'black' ">
+                        All leaves
+                       </p> 
+                    </button>
+                    <button mat-button (click)="showUnPaid()">
+                       <p [style.color]="!change ? '#18a399' : 'black' ">
+                        
+                        Unpaid leaves
+                    </button>
+                    <hr>
+                </div>
+                </section>
+                
+
+                <div id="leavecontents" *ngIf="isLeaves">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Opening &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Credited &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Availed &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Closing
+                  <br>
+                  <br>
+                  <br>
+                  Sick Leave &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.32  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.32
+                </div>
+                <br>
+
+          </mat-card-actions>
+          
+          <mat-card-content class="contents" *ngIf="isUnpaid">
+          
+            <div>
+              <mat-icon class="permedia">perm_media</mat-icon>
+            </div>
+            You don't have any unpaid leaves for this month
+           
+          </mat-card-content>
+          
+        </mat-card>
+      </div>
+    </div>
+    </div>
+
+
+
+<!-- 2 -->
+
+
+
+ <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" >
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+        <mat-card class="mat-elevation-z4" >
+        <div class="heading">
+          <mat-card-header class="color1">
+            <mat-card-title>
+                Holidays
+            </mat-card-title>
+        </mat-card-header>
+    </div>
+
+
+          <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef>  </th>
+                    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                  </ng-container>
+              
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+              
+                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </div>
+              
+             
+          </mat-card-content>
+          
+        </mat-card>
+      </div>
+
+      <!--  -->
+
+
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" >
+        <mat-card class="mat-elevation-z4" >
+          <mat-card-header class="color1">
+            <mat-card-title>
+               Happier Knowledge
+            </mat-card-title>
+          </mat-card-header>
+         
+          <mat-card-actions>
+          
+                
+                    <button mat-button  (click)="showContCard()"  >
+                        <p [style.color]="isdefCard ? '#18a399' : 'black' ">
+                         Default
+                        </p> 
+                     </button> 
+
+                     <button mat-button (click)="showTutCard()">
+                      <p [style.color]="!docsChange ? '#18a399' : 'black' ">
+                       happier Tutorials
+                      </button>
+              
+              
+                   <button mat-button (click)="showDocCard()">
+                      <p [style.color]="!tutsChange ? '#18a399' : 'black' ">
+                          FAQs and happierWork Doc
+                   </button>
+        
+                   
+
+                     <br>
+                    
+                     <div class="containerdis" *ngIf="isContCard">
+                        <div class="row">
+                          <div class="col-md-3 mx-auto my-5 example-container2" *ngFor="let default of defaults">
+                            <mdb-card>
+                              <mdb-card-img [src]="default.img" alt="Card image cap">
+                              </mdb-card-img>
+                              <button mat-button class="alignitem">
+                              <mdb-card-body>
+                               
+                                <img mat-card-image>
+                                 <img class="imgSize" [src]="default.img" alt="Card image cap">
+                                
+                                <br>
+                                <mdb-card-title>
+                                  {{default.title}}
+                                </mdb-card-title>
+                              
+                              </mdb-card-body>
+                            </button>
+
+                            </mdb-card>
+                            <br>
+                          </div>
+                        </div>
+                      </div>
+                    
+                    <br>
+
+                    <div class="containerdis" *ngIf="isTutCard">
+                    <div class="row">
+                      <div class="col-md-3 mx-auto my-5 example-container2" *ngFor="let default of tutorials">
+                        <mdb-card>
+                          <mdb-card-img [src]="default.img" alt="Card image cap">
+                          </mdb-card-img>
+                          <button mat-button class="alignitem">
+                          <mdb-card-body>
+                           
+                            <img mat-card-image>
+                             <img class="imgSize" [src]="default.img" alt="Card image cap">
+                            
+                            <br>
+                            <mdb-card-title>
+                              {{default.title}}
+                            </mdb-card-title>
+                          
+                          </mdb-card-body>
+                        </button>
+
+                        </mdb-card>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                        
+
+                  <div class="containerdis" *ngIf="isDocCard">
+                    <div class="row">
+                      <div class="col-md-3 mx-auto my-5 example-container2" *ngFor="let default of docs">
+                        <mdb-card>
+                          <mdb-card-img [src]="default.img" alt="Card image cap">
+                          </mdb-card-img>
+                          <button mat-button class="alignitem">
+                          <mdb-card-body>
+                           
+                            <img mat-card-image>
+                             <img class="imgSize" [src]="default.img" alt="Card image cap">
+                            
+                            <br>
+                            <mdb-card-title>
+                              {{default.title}}
+                            </mdb-card-title>
+                          
+                          </mdb-card-body>
+                        </button>
+
+                        </mdb-card>
+                        <br>
+                      </div>
+                    </div>
+                  </div>
+                
+          </mat-card-actions>
+         
+          <mat-card-content>
+           
+          </mat-card-content>
+          
+        </mat-card>
+      </div>
+    </div>
+    </div>
+
+
+<!-- 3 -->
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    
+
+        <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" >
+          <mat-card class="mat-elevation-z4" >
+            <mat-card-header class="color1">
+              <mat-card-title>
+                External Links
+              </mat-card-title>
+            </mat-card-header>
+       
+      <mat-card-actions>
+        <button mat-button  (click)="showDef2Card()"  >
+          <p [style.color]="isDef2 ? '#18a399' : 'black' ">
+           Default
+          </p> 
+       </button> 
+
+       <button mat-button (click)="showRentCard()">
+        <p [style.color]="isRent ? '#18a399' : 'black' ">
+          Rent Receipts I Investment Proof
+        </button>
+        <br>
+
+        <div class="containerdis" *ngIf="isDef2">
+          <div class="row">
+            <div class="col-md-3 mx-auto my-5 example-container2" *ngFor="let default of defaults2">
+              <mdb-card>
+                <mdb-card-img [src]="default.img" alt="Card image cap">
+                </mdb-card-img>
+                <button mat-button class="alignitem2">
+                <mdb-card-body>
+                 
+                  <img mat-card-image>
+                   <img class="imgSize" [src]="default.img" alt="Card image cap">
+                  
+                  <br>
+                  <mdb-card-title>
+                    {{default.title}}
+                  </mdb-card-title>
+                
+                </mdb-card-body>
+              </button>
+
+              </mdb-card>
+              <br>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="containerdis" *ngIf="isRent">
+          <div class="row">
+            <div class="col-md-3 mx-auto my-5 example-container2" *ngFor="let default of rent">
+              <mdb-card>
+                <mdb-card-img [src]="default.img" alt="Card image cap">
+                </mdb-card-img>
+                <button mat-button class="alignitem">
+                <mdb-card-body>
+                 
+                  <img mat-card-image>
+                   <img class="imgSize" [src]="default.img" alt="Card image cap">
+                  
+                  <br>
+                  <mdb-card-title>
+                    {{default.title}}
+                  </mdb-card-title>
+                
+                </mdb-card-body>
+              </button>
+
+              </mdb-card>
+              <br>
+            </div>
+          </div>
+        </div>
+
+      </mat-card-actions>
+        
+        
+      </mat-card>
+    </div>
+
+<!--  -->
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header id="tweet">
+          <mat-card-title id="tweettitle">
+                Tweets
+              <span id="subtweet">
+                by
+                  <a target="_blank" href="https://twitter.com/searce?ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Eprofile%3Asearce%7Ctwgr%5EeyJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9mZiIsInZlcnNpb24iOm51bGx9LCJ0ZndfcmVmc3JjX3Nlc3Npb24iOnsiYnVja2V0Ijoib2ZmIiwidmVyc2lvbiI6bnVsbH0sInRmd190d2VldF9yZXN1bHRfbWlncmF0aW9uXzEzOTc5Ijp7ImJ1Y2tldCI6InR3ZWV0X3Jlc3VsdCIsInZlcnNpb24iOm51bGx9LCJ0Zndfc2Vuc2l0aXZlX21lZGlhX2ludGVyc3RpdGlhbF8xMzk2MyI6eyJidWNrZXQiOiJpbnRlcnN0aXRpYWwiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2V4cGVyaW1lbnRzX2Nvb2tpZV9leHBpcmF0aW9uIjp7ImJ1Y2tldCI6MTIwOTYwMCwidmVyc2lvbiI6bnVsbH0sInRmd191c2VyX2ZvbGxvd19pbnRlbnRfMTQ0MDYiOnsiYnVja2V0IjoiZm9sbG93IiwidmVyc2lvbiI6bnVsbH0sInRmd190d2VldF9lZGl0X2Zyb250ZW5kIjp7ImJ1Y2tldCI6Im9mZiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&ref_url=https%3A%2F%2Fsearce.happierwork.com%2F%23%2Fdashboard" id="tweetlink">@searce</a>
+              </span>
+
+              &nbsp;
+
+          </mat-card-title>
+        </mat-card-header>
+       
+        <hr>
+        <mat-card-content class="contents">
+          <br>
+          <br>
+         tweets
+         <br>
+         <br>
+        </mat-card-content>
+        
+      </mat-card>
+    </div>
+  </div>
+  </div>
+    
+<!-- 4 -->
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    
+
+        <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%">
+          <mat-card  class="facebookcard">
+            <mat-card-header id="fbsearce">
+              <mat-card-title>
+                
+                <div class = "box">
+                  <img mat-card-image id="fbsearce" src = "https://media-exp2.licdn.com/dms/image/C4E1BAQH30T1o9D6STA/company-background_10000/0/1623157519156?e=2147483647&v=beta&t=7VaqtTnby9kMFWrz8LhXTtiA0LjW25x1i6MdSIpwQoA" alt = "Current Affairs">
+                  <div class = "btn3">
+                      <!-- <img src="https://miro.medium.com/max/1200/1*y0S5M5eIaZnxzyyMqaDF6g.png"> -->
+                      <a target="_blank" href="https://www.facebook.com/Searce.Inc/" style="color:#ffffff;">Searce</a>
+                      <p id="likes">1,886 likes</p>
+                  </div>
+                  <button class = "btn">
+                    Like Page
+                  </button>
+                  <button class = "btn2">Contact Us</button>
+               </div>
+              </mat-card-title>
+            </mat-card-header>
+     
+            <mat-card-content class="contents">
+              <br>
+              <br>
+              facebook feed
+             <br>
+             <br>
+            </mat-card-content>
+        
+        
+      </mat-card>
+    </div>
+
+<!--  -->
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+            Youtube
+          </mat-card-title>
+        
+        </mat-card-header>
+        
+        <div class="imgg">
+        <mat-card-actions>
+          <img class="imgA1" src="data:image/png;base64,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">
+          <img class="imgB1" src="https://miro.medium.com/max/1200/1*y0S5M5eIaZnxzyyMqaDF6g.png">
+          <!-- <img id="utsearce" src="data:image/png;base64,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"> -->
+        </mat-card-actions>
+      </div>
+        <mat-card-content class="contents">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+         youtube videos
+         <br>
+         <br>
+        </mat-card-content>
+        
+      </mat-card>
+    </div>
+  </div>
+  </div>
+
+  <!--5  -->
+
+ <div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+      <div class="color1" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+              Image Gallery
+          </mat-card-title>
+          <span class="titlespan">
+            <mat-form-field id="test" class="fieldcolor">
+              <mat-select [(value)]="selected1" class="fieldcolor">
+                <!-- <mat-option value="option1">Previous 7 days</mat-option> -->
+                <mat-option value="option2">Leadership 2.0</mat-option>
+                <mat-option value="option3">My Drive</mat-option>
+              </mat-select>
+          </mat-form-field>
+          </span>
+        </mat-card-header>  
+    </div>
+        <mat-card-content class="contents">
+          
+          <div>
+            <mat-icon class="permedia">perm_media</mat-icon>
+          </div>
+          No Data Available
+         
+        </mat-card-content>
+        
+      </mat-card>
+    </div>
+
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+      <div class="color1" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+              Video Gallery
+          </mat-card-title>
+          <span class="titlespan">
+            <mat-form-field id="test" class="fieldcolor">
+              <mat-select [(value)]="selected2" class="fieldcolor">
+                <!-- <mat-option value="option1">Previous 7 days</mat-option> -->
+                <mat-option value="option2">Leadership 2.0</mat-option>
+                <mat-option value="option3">My Drive</mat-option>
+              </mat-select>
+          </mat-form-field>
+          </span>
+        </mat-card-header>  
+    </div>
+        <mat-card-content class="contents">
+          
+          <div>
+            <mat-icon class="permedia">perm_media</mat-icon>
+          </div>
+          No Data Available
+         
+        </mat-card-content>
+        
+      </mat-card>
+    </div>
+  </div>
+  </div>
+
+  <!-- 6 -->
+
+
+ <div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+             Requests
+          </mat-card-title>
+        </mat-card-header>
+       
+        <mat-card-actions>
+          <section>
+              <div>
+                  <button mat-button  (click)="showPendingReq()">
+                     <p [style.color]="isPendingReq ? '#18a399' : 'black' ">
+                      Pending For Me
+                     </p> 
+                  </button>
+                  <button mat-button (click)="showMyReq()">
+                     <p [style.color]="!isMyReq ? 'black' : '#18a399' ">
+                      
+                     My Requests
+                  </button>
+                  <hr>
+              </div>
+              </section>
+
+        </mat-card-actions>
+        
+        <mat-card-content class="contents" *ngIf="isPendingReq">
+            <div>
+              <mat-icon class="permedia">event_note</mat-icon>
+            </div>
+            No requests  
+        </mat-card-content>
+
+        <mat-card-content class="contents" *ngIf="isMyReq">
+            
+           Approved requests  
+        </mat-card-content>
+
+       
+
+      
+        
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+
+            <div>
+              <div class="side">
+                People
+              </div>
+              <div class="side" id="tog-ppl2">
+                <form *ngIf="!isOpen2">
+                  <button mat-icon-button>
+                    <mat-icon >search</mat-icon>
+                  </button>
+                  <span>
+                    <input  type="text" placeholder="Search" autofocus class="iptext">
+                    <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true" (click)="toggleMenu2()">×</span>
+                     </button>
+                  </span>
+                 
+                 </form>
+              </div>
+              <div class="side" id="side2">
+                <button (click)="toggleMenu2()" mat-icon-button id="tog-ppl">
+                  <mat-icon  *ngIf="isOpen2">search</mat-icon>
+                </button>
+              </div>
+            </div>
+
+          </mat-card-title>
+        </mat-card-header>
+       
+        <mat-card-actions>
+          <section>
+              <div>
+                  <button mat-button  (click)="showTeamMembers()">
+                     <p [style.color]="isTeam ? '#18a399' : 'black' ">
+                      My Team
+                     </p> 
+                  </button>
+                  <button mat-button (click)="showCompanyMembers()">
+                     <p [style.color]="!isCompany ? 'black' : '#18a399' ">
+                      
+                     Company
+                  </button>
+                  <hr>
+              </div>
+              </section>
+
+        </mat-card-actions>
+        
+        <mat-card-content class="contents" *ngIf="isTeam">
+              Team Members
+        </mat-card-content>
+
+        <mat-card-content class="contents" *ngIf="isCompany">
+              Company Members
+        </mat-card-content>
+
+        <mat-card-content>
+          <hr>
+        </mat-card-content>
+
+
+        <mat-card-actions id="viewall">
+          <button mat-button >
+            View All
+          </button>
+        </mat-card-actions>
+        
+      </mat-card>
+    </div>
+  </div>
+  </div>
+
+<!-- 7 -->
+
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+            
+            <div class="mail">
+              <span>
+                Google Mail
+              </span>
+              <span id="searchm">
+                <button (click)="toggleMenuSearch()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                  <mat-icon  *ngIf="!isOpen">search</mat-icon>
+                  <mat-icon  *ngIf="isOpen">search</mat-icon>
+                </button>  
+              </span>
+              <span>
+                <form *ngIf="isOpenSearch">
+                  <input  type="text" placeholder="Search" autofocus class="iptext">
+                  <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true" (click)="toggleMenuSearch()">×</span>
+                   </button>
+                 </form>
+                </span>
+              <span>
+                <mat-form-field id="test" class="fieldcolor">
+                  <mat-select [(value)]="selected3">
+                    <mat-option value="option1">CHAT</mat-option>
+                    <mat-option value="option3">SENT</mat-option>
+                    <mat-option value="option2">INBOX</mat-option>
+                    <mat-option value="option4">IMPORTANT</mat-option>
+                    <mat-option value="option5">TRASH</mat-option>
+                    <mat-option value="option6">DRAFT</mat-option>
+                    <mat-option value="option7">SPAM</mat-option>
+                    <mat-option value="option8">CATEGORY_FORUMS</mat-option>
+                    <mat-option value="option9">CATEGORY_UPDATES</mat-option>
+                    <mat-option value="option10">CATEGORY_PERSONAL</mat-option>
+                    <mat-option value="option11">CATEGORY_PROMOTIONS</mat-option>
+                    <mat-option value="option12">CATEGORY_SOCIAL</mat-option>
+                    <mat-option value="option13">STARRED</mat-option>
+                    <mat-option value="option14">UNREAD</mat-option>
+                  </mat-select>
+              </mat-form-field>
+            </span>
+
+              <span>
+                <button  mat-icon-button>
+                  <mat-icon>add</mat-icon>
+                </button>
+              </span>
+            </div> 
+          
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="contents">  
+           mails
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+              News
+                <span id="newsbtn">
+                <button  mat-icon-button class="example-icon favorite-icon" >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+               </span>
+          </mat-card-title>
+        </mat-card-header>
+       
+        <mat-card-actions>
+          <section>
+              <div>
+                  <button mat-button  (click)="showBusinessNews()">
+                     <p [style.color]="isBusiness ? '#18a399' : 'black' ">
+                      Business
+                     </p> 
+                  </button>
+                  <button mat-button (click)="showScienceNews()">
+                     <p [style.color]="isScience ? '#18a399' : 'black' ">
+                     Science
+                  </button>
+                  <button mat-button (click)="showEconomyNews()">
+                     <p [style.color]="isEconomy ? '#18a399' : 'black' ">
+                     Economy
+                  </button>
+                  <button mat-button (click)="showSportsNews()">
+                     <p [style.color]="isSports ? '#18a399' : 'black' ">
+                     Sports
+                  </button>
+                  <button mat-button (click)="showEducationNews()">
+                     <p [style.color]="isEducation ? '#18a399' : 'black' ">
+                     Education
+                  </button>
+                  <button mat-button (click)="showTechnologyNews()">
+                     <p [style.color]="isTechnology ? '#18a399' : 'black' ">
+                     Technology
+                  </button>
+                  <hr>
+              </div>
+              </section>
+
+        </mat-card-actions>
+        <mat-card-content class="contents" *ngIf="isBusiness">
+          Business News
+       </mat-card-content>
+        <mat-card-content class="contents" *ngIf="isScience">
+          <div>
+            
+            <mat-icon class="permedia">language</mat-icon>
+          </div>
+          <p class="permediatext">No feeds Available</p>
+       </mat-card-content>
+        <mat-card-content class="contents" *ngIf="isEconomy">
+         Economy News
+       </mat-card-content>
+        <mat-card-content class="contents" *ngIf="isSports">
+          Sports News
+       </mat-card-content>
+        <mat-card-content class="contents" *ngIf="isEducation">
+          Education News
+       </mat-card-content>
+        <mat-card-content class="contents" *ngIf="isTechnology">
+          Technology News
+       </mat-card-content>
+        
+      </mat-card>
+    </div>
+  </div>
+  </div>
+
+<!-- 8 -->
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+            Careers
+            <span id="addbtn">
+              <button  mat-icon-button *ngIf="isJobsForReferral">
+                <mat-icon>add</mat-icon>
+              </button>
+            </span>
+          </mat-card-title>
+        </mat-card-header>
+       
+        <mat-card-actions>
+          <section>
+              <div>
+                  <button mat-button  (click)="showMyJobsForReferral()">
+                     <p [style.color]="isJobsForReferral ? '#18a399' : 'black' ">
+                      Jobs for Referral
+                     </p> 
+                  </button>
+                  <button mat-button (click)="showInternalJobs()">
+                     <p [style.color]="isInternalJob ? '#18a399' : 'black' ">
+                      Internal Jobs
+                    </p>
+                  </button>
+                  <button mat-button (click)="showMyReferral()">
+                     <p [style.color]="isMyReferral ? '#18a399' : 'black' ">
+                      My Referrals
+                    </p>
+                  </button>
+                  <hr>
+              </div>
+              </section>
+
+        </mat-card-actions>
+        
+        <mat-card-content class="contents" *ngIf="isJobsForReferral">
+            jobs for referral
+        </mat-card-content>
+
+        <mat-card-content class="contents" *ngIf="isInternalJob">
+            Internal Job
+        </mat-card-content>
+
+        <mat-card-content class="contents" *ngIf="isMyReferral">
+            <div>
+              <mat-icon class="permedia">youtube_searched_for</mat-icon>
+            </div>
+            <p class="permediatext">My Referrals</p>
+        </mat-card-content>
+
+        <mat-card-actions id="viewall">
+          <button mat-button *ngIf="!isMyReferral">
+            View All
+          </button>
+        </mat-card-actions>
+
+      
+        
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header class="color1">
+          <mat-card-title>
+             My Drive
+             <span id="openinnew">
+              <button  mat-icon-button  >
+                <mat-icon>open_in_new</mat-icon>
+              </button>
+             </span>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="contents">
+          drive
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>
+  </div>
+
+
+  <!--9  -->
+
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid" >
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="50%" class="cardsize">
+        <mat-card class="mat-elevation-z4" >
+        <div class="heading">
+          <mat-card-header class="color1">
+            <mat-card-title>
+                <div>
+                  <div class="side">
+                    Timesheets
+                  </div>
+                  <div class="side" id="side3" >
+                    <form *ngIf="!isOpen2">
+                      <button mat-icon-button>
+                        <mat-icon >search</mat-icon>
+                      </button>
+                      <span>
+                        <input  type="text" placeholder="Search" autofocus class="iptext">
+                        <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true" (click)="toggleMenu2()">×</span>
+                         </button>
+                      </span>
+                     
+                     </form>
+                  </div>
+                  <div class="side" id="side2">
+                    <button (click)="toggleMenu2()" mat-icon-button id="tog2">
+                      <mat-icon  *ngIf="isOpen2">search</mat-icon>
+                    </button>
+                  </div>
+                  <div class="side" id="today">
+                    27-Jun-2022
+                  </div>
+                </div>
+            </mat-card-title>
+        </mat-card-header>
+       </div>
+
+       <mat-card-actions>
+            <div>
+                <button mat-button  (click)="showMyProj()">
+                   <p [style.color]="change ? '#18a399' : '#18a399' ">
+                    My Projects
+                   </p> 
+                </button>
+                <hr>
+            </div>
+      </mat-card-actions>
+
+    <mat-card-content class="contents" *ngIf="isMyProj">
+      <div>
+        <mat-icon class="permedia">event_note</mat-icon>
+      </div>
+      No Projects Found
+
+    </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+  </div>
+

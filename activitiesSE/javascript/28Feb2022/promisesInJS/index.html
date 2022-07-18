@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises in JavaScript</title>
+</head>
+<body>
+    <h1>Promises in JavaScript</h1>
+
+    <B>A promise is an object that represents an operation which has produced or will eventually produce a value.</B>
+    <br>
+    <h3>Syntax</h3>
+    <div>
+        var promise = new Promise(function(resolve, reject){
+        <br>
+            //do something
+        <br>
+       });
+    </div>
+    <br>
+    <div>
+       <h3> A Promise is in one of these states:</h3>
+        <B>Pending</B> — The initial state where the outcome is not known as the operation is not completed yet.
+        <br>
+        <B>Fulfilled</B> — The state of a promise representing a successful operation with the resulting value.
+        <br>
+        <B>Rejected</B> — The state of a promise representing a failed operation with a reason why it failed.
+        <br>
+        Once a promise is fulfilled or rejected, it is immutable (i.e. it can never change again).
+    </div>
+    <BR>
+    <div>
+        The <B>Promise.all()</B> static method accepts an iterable (e.g. an Array) of promises and returns a new promise, which resolves when all promises in the iterable have resolved, or rejects if at least one of the promises in the iterable have rejected.
+    </div>
+    <br>
+    <div>The <B>Promise.race()</B> static method accepts an iterable of Promises and returns a new Promise which resolves or rejects as soon as the first of the promises in the iterable has resolved or rejected.</div>
+    <script src="main.js"></script>
+
+    <br>
+    <div>
+        The <B>Promise.resolve()</B> method returns a Promise object that is resolved with a given value. If the value is a promise, that promise is returned; if the value is a thenable, the returned promise will "follow" that thenable, adopting its eventual state; otherwise the returned promise will be fulfilled with the value. 
+    </div>
+
+    <br>
+    <div>
+        The <B>Promise.reject()</B> method returns a Promise object that is rejected with a given reason.
+    </div>
+</body>
+</html>
